@@ -18,6 +18,7 @@ interface EmptyStateProps {
   description: string;
 }
 
+/** Centered icon, title and description shown when a tab has no items. */
 function EmptyState({ icon, title, description }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-2 px-4 py-12 text-center">
@@ -28,6 +29,11 @@ function EmptyState({ icon, title, description }: EmptyStateProps) {
   );
 }
 
+/**
+ * Floating left sidebar listing projects in "My Projects" and "Shared" tabs.
+ * Slides over the canvas without pushing content; while closed it is inert and
+ * hidden from assistive tech. Calls `onClose` from its header close button.
+ */
 export function ProjectSidebar({ isOpen, onClose }: ProjectSidebarProps) {
   return (
     <aside

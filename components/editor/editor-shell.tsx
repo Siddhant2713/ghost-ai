@@ -5,6 +5,10 @@ import { useState } from "react";
 import { EditorNavbar } from "@/components/editor/editor-navbar";
 import { ProjectSidebar } from "@/components/editor/project-sidebar";
 
+/**
+ * Client-side editor layout: owns the sidebar open state and composes the
+ * navbar, the floating project sidebar and the main canvas area.
+ */
 export function EditorShell() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
