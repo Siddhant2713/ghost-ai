@@ -5,15 +5,16 @@ change.
 
 ## Current Phase
 
-- Feature 0 complete; ready for next unit
+- Feature 1 complete; ready for next unit
 
 ## Current Goal
 
-- Feature 0: design system and UI primitives (shadcn/ui, lucide-react, `cn()` helper) — spec: `context/feature-specs/0-design-system.md`
+- Feature 1: editor chrome — `EditorNavbar`, `ProjectSidebar` (floating, slide-in), reusable dialog pattern — spec: `context/feature-specs/1-editor.md`
 
 ## Completed
 
 - Feature 0: design system — shadcn/ui (base-nova, Base UI primitives) configured; Button, Card, Dialog, Input, Tabs, Textarea, ScrollArea added to `components/ui/` (unmodified); `lucide-react` installed; `lib/utils.ts` exports `cn()`; `globals.css` dark-only theme with project tokens + shadcn tokens mapped onto them. `tsc` and `npm run build` pass.
+- Feature 1: editor chrome — `components/editor/editor-navbar.tsx` (fixed h-14, left/center/right, sidebar toggle with PanelLeftOpen/Close), `components/editor/project-sidebar.tsx` (floating overlay, slide-in, `isOpen`/`onClose`, My Projects/Shared tabs with empty states, full-width New Project button), `components/shared/app-dialog.tsx` (title/description/body/footer dialog pattern on project tokens, no concrete dialogs). `components/editor/editor-shell.tsx` owns sidebar state and is rendered from `app/page.tsx`. `tsc`, lint, `npm run build` pass.
 
 ## In Progress
 
