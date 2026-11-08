@@ -9,7 +9,7 @@ export const clerkAppearance = {
   theme: dark,
   // Lets Tailwind utilities in `elements` override Clerk (see layer order in globals.css).
   cssLayerName: "clerk",
-  layout: {
+  options: {
     socialButtonsPlacement: "top",
     socialButtonsVariant: "blockButton",
   },

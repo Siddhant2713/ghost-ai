@@ -5,17 +5,18 @@ change.
 
 ## Current Phase
 
-- Feature 3 (auth) complete; ready for next unit
+- Feature 4 (project dialogs) complete; ready for next unit
 
 ## Current Goal
 
-- Feature 3: Clerk auth — provider, sign-in/sign-up pages, route protection, redirects, user menu — spec: `context/feature-specs/3.auth.md`
+- Feature 4: editor home + create/rename/delete project dialogs + sidebar actions — spec: `context/feature-specs/4.project-dialogs.md`
 
 ## Completed
 
 - Feature 0: design system — shadcn/ui (base-nova, Base UI primitives) configured; Button, Card, Dialog, Input, Tabs, Textarea, ScrollArea added to `components/ui/` (unmodified); `lucide-react` installed; `lib/utils.ts` exports `cn()`; `globals.css` dark-only theme with project tokens + shadcn tokens mapped onto them. `tsc` and `npm run build` pass.
 - Feature 1: editor chrome — `components/editor/editor-navbar.tsx` (fixed h-14, left/center/right, sidebar toggle with PanelLeftOpen/Close), `components/editor/project-sidebar.tsx` (floating overlay, slide-in, `isOpen`/`onClose`, My Projects/Shared tabs with empty states, full-width New Project button), `components/shared/app-dialog.tsx` (title/description/body/footer dialog pattern on project tokens, no concrete dialogs). `components/editor/editor-shell.tsx` owns sidebar state and is rendered from `app/page.tsx`. `tsc`, lint, `npm run build` pass.
 - Feature 3: auth — `@clerk/ui` installed; `ClerkProvider` wraps root layout with `lib/clerk-appearance.ts` (clerk `dark` theme, variables mapped to app CSS vars); `components/auth/auth-layout.tsx` + `architecture-preview.tsx` two-panel (lg+) / form-only layout matching `context/ScreenShots/Sign in.png` (headline, prompt pill, static canvas preview, numbered features; flat Clerk form, copy via `lib/clerk-localization.ts`), used by `app/sign-in/[[...sign-in]]` and `app/sign-up/[[...sign-up]]`; `proxy.ts` at root (passes local `signInUrl`/`signUpUrl` so Clerk doesn't redirect to hosted pages) protects all routes except sign-in/sign-up; `/` redirects to `/editor` (signed in) or `/sign-in`; editor moved to `app/editor/page.tsx`; `UserButton` in `EditorNavbar` right section. `tsc`, lint, `npm run build` pass.
+- Feature 4: project dialogs (UI matched to `context/ScreenShots/Editor home + dialogs@2x.png` and mobile sidebar shot: brand header, Your projects / Shared with you sections with owner names, user footer, dot-grid canvas, "Editor" navbar label) — `lib/projects.ts` (Project type, `slugify`, mock data); `hooks/use-project-dialogs.ts` (mock project list, dialog/form/loading state, open/close/submit); `components/editor/project-dialogs.tsx` (create/rename with live slug preview and autofocus, Enter submits; delete is destructive confirm only); `components/editor/editor-home.tsx` (centered heading, description, New Project button, no cards); `ProjectSidebar` now lists projects, rename/delete actions only for owned projects, New Project wired, mobile backdrop scrim closes sidebar. Mock data only, no API/persistence. `tsc` and lint pass.
 
 ## In Progress
 

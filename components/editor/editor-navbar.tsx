@@ -40,7 +40,9 @@ export function EditorNavbar({
           <SidebarIcon className="h-5 w-5" />
         </Button>
       </div>
-      <div className="flex items-center justify-center" />
+      <div className="flex items-center justify-center text-sm text-copy-secondary">
+        Editor
+      </div>
       <div className="flex items-center justify-end">
         <UserButton />
       </div>

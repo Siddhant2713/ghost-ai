@@ -3,7 +3,10 @@
 import { useRef, useState } from "react";
 
 import { EditorNavbar } from "@/components/editor/editor-navbar";
+import { EditorHome } from "@/components/editor/editor-home";
+import { ProjectDialogs } from "@/components/editor/project-dialogs";
 import { ProjectSidebar } from "@/components/editor/project-sidebar";
+import { useProjectDialogs } from "@/hooks/use-project-dialogs";
 
 /**
  * Client-side editor layout: owns the sidebar open state and composes the
@@ -11,6 +14,7 @@ import { ProjectSidebar } from "@/components/editor/project-sidebar";
  */
 export function EditorShell() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const projectDialogs = useProjectDialogs();
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   // The sidebar becomes inert once closed, so move focus out of it first.
@@ -30,11 +34,14 @@ export function EditorShell() {
         <ProjectSidebar
           isOpen={isSidebarOpen}
           onClose={handleSidebarClose}
+          projects={projectDialogs.projects}
+          onCreate={projectDialogs.openCreate}
+          onRename={projectDialogs.openRename}
+          onDelete={projectDialogs.openDelete}
         />
-        <main className="flex h-full items-center justify-center text-copy-muted">
-          ghost ai
-        </main>
+        <EditorHome onNewProject={projectDialogs.openCreate} />
       </div>
+      <ProjectDialogs controller={projectDialogs} />
     </div>
   );
 }
