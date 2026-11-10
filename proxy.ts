@@ -4,7 +4,10 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 const signInPath = process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL ?? "/sign-in";
 const signUpPath = process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL ?? "/sign-up";
 
-// The env vars may hold full URLs; route matching needs only the pathname.
+/**
+ * Reduces a Clerk URL env value to its pathname. The env vars may hold full
+ * URLs, but route matching needs only the path.
+ */
 const toPathname = (value: string) =>
   value.startsWith("/") ? value : new URL(value).pathname;
 
@@ -13,6 +16,10 @@ const isPublicRoute = createRouteMatcher([
   `${toPathname(signUpPath)}(.*)`,
 ]);
 
+/**
+ * Clerk middleware: requires authentication for every route except the
+ * sign-in and sign-up pages.
+ */
 export default clerkMiddleware(
   async (auth, request) => {
     if (!isPublicRoute(request)) {
